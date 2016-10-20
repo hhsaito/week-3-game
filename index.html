@@ -38,7 +38,7 @@ function reset() {
 	computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 	console.log(computerGuess);
 }
-
+// Set variables to the same as the beginning.
 function resetAll() {
 	     wins = 0,
        losses = 0, 
@@ -89,7 +89,7 @@ document.onkeyup = function(event) {
 			losses++;
 			reset();
 		}
-		
+
 	tallyScore();
 	
 	}
