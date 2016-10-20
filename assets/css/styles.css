@@ -1,12 +1,6 @@
 
 body {
-	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
 	text-align: center;
 }
-h1 {
-	font-weight: 700;
-	margin: 0.5em 0 1em 0;
-}
-p {
-	margin: 0.5em 0 1em 0;
-}
+#bad-guess { color: red; }
+#resetGame { margin-top: 2em; }

@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Psychic Game</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 <body>
@@ -15,7 +17,9 @@
 		<p>Guesses left: 9</p>
 		<p>Your guesses so far: </p>
 	</div>
-
+	<div class="btn-group">
+  		<button class="btn btn-primary" id="resetGame">Reset</button>
+  	</div>
 <script type="text/javascript">
 
 // letter variables and initial values
@@ -35,7 +39,34 @@ function reset() {
 	console.log(computerGuess);
 }
 
+function resetAll() {
+	     wins = 0,
+       losses = 0, 
+  guessesLeft = 9,
+  userGuesses = [],
+computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+	tallyScore();
+}
+function tallyScore() {
+	// Taking the tallies and displaying them in HTML
+		var html = "<p>Wins: " + 
+		wins + 
+		"</p>" +
+		"<p>Losses: " + 
+		losses + 
+		"</p>" +
+		"<p>Guesses left: " + 
+		guessesLeft + 
+		"</p>" +
+		"<p>Your guesses so far: <span id='bad-guess'>" + 
+		userGuesses + "</span></p>";
+
+		// Placing the html into the game ID
+		document.querySelector('#theGame').innerHTML = html;
+}
 reset();
+
+document.getElementById("resetGame").onclick = function() {resetAll()};
 
 // When the user presses the key it records the keypress and then sets it to userguess
 document.onkeyup = function(event) {
@@ -58,22 +89,8 @@ document.onkeyup = function(event) {
 			losses++;
 			reset();
 		}
-
-		// Taking the tallies and displaying them in HTML
-		var html = "<p>Wins: " + 
-		wins + 
-		"</p>" +
-		"<p>Losses: " + 
-		losses + 
-		"</p>" +
-		"<p>Guesses left: " + 
-		guessesLeft + 
-		"</p>" +
-		"<p>Your guesses so far: " + 
-		userGuesses + "</p>";
-
-		// Placing the html into the game ID
-		document.querySelector('#theGame').innerHTML = html;
+		
+	tallyScore();
 	
 	}
 }
